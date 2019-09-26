@@ -1,0 +1,36 @@
+.add {
+    margin: 20px 0;
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    box-shadow: 8px 8px 10px rgba($color: #333, $alpha: .3);
+    border: none;
+    outline: none;
+}
+
+.display {
+    overflow: auto;
+    height: 550px;
+
+    .main {
+        margin-bottom: 18px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 8px 8px 10px rgba($color: #333, $alpha: .1);
+        padding: 0 20px;
+        border-radius: 4px;
+
+        p {
+            color: #333;
+            font-size: 20px;
+            // text-transform: capitalize;
+
+            &.edit {
+                font-size: 15px;
+                transform: translateY(-12px);
+                color: rgba($color: #3333, $alpha: .5);
+            }
+        }
+    }
+}
