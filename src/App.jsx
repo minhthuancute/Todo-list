@@ -10,20 +10,39 @@ import 'react-toastify/dist/ReactToastify.css';
 const initDatas = {
    inputValue: "",
    idEdit: -1,
-   todoTask: [{ taskName: "", createAt: "" }]
+   todoTask: [
+      { taskName: "", createAt: "" }
+   ]
 }
 
 class App extends Component {
-   notify = () => toast("Wow so easy !");
-
-   notify = () => {
-      toast.success("Success Notification !", {
-         position: toast.POSITION.TOP_CENTER
-      });
-   };
 
    state = initDatas
 
+   notify = () => toast("Wow so easy !");
+
+   notifySuccess = () => {
+      toast.success("Success Notification !", {
+         position: toast.POSITION.RIGHT_CENTER,
+         pauseOnHover: false
+      });
+   };
+
+   notifyError = () => {
+      toast.error("Notification Already Exis !", {
+         position: toast.POSITION.RIGHT_CENTER,
+         pauseOnHover: false
+      })
+   }
+
+   notifyChange = () => {
+      toast.success("Changed Successfuly !", {
+         position: toast.RIGHT_CENTER,
+         pauseOnHover: false
+      })
+   }
+
+   // Sau khi Render , can use set state
    componentDidMount() {
       const tasks = localStorage.getItem("tasks");
       this.setState(tasks !== null ? JSON.parse(tasks) : initDatas)
@@ -31,7 +50,6 @@ class App extends Component {
 
    handleChange = (e) => {
       this.setState({
-         inputValue: "",
          inputValue: e.target.value
       })
    }
@@ -39,26 +57,33 @@ class App extends Component {
    createNewTask = (e) => {
       e.preventDefault();
       let content = this.state.inputValue;
-      let idEdit = this.state.idEdit
-      // Get real date //
+      let idEdit = this.state.idEdit;
       let newDate = new Date();
-      let date, month, year;
-      date = newDate.getDate();
-      month = newDate.getMonth() + 1;
-      year = newDate.getFullYear();
-      let final = "Created at: " + date + "/" + month + "/" + year;
-      let finalEdit = "Edited at: " + date + "/" + month + "/" + year;
-      // Kiem tra task da ton tai hay chua , su dung ! phu dinh lai
+      let final = "Created at: " + newDate.getDate() + "/" + (newDate.getMonth() + 1) + "/" + newDate.getFullYear()
+         + " Time : " + newDate.getMinutes() + ":" + newDate.getHours();
+      let finalEdit = "Updated at: " + newDate.getDate() + "/" + (newDate.getMonth() + 1) + "/" + newDate.getFullYear()
+         + " Time : " + newDate.getMinutes() + ":" + newDate.getHours();
+      // Kiem tra task da ton tai hay chua , su dung !
+      // Add new task
       if (!this.state.todoTask.find(item => item.taskName === content) && content && idEdit === -1) {
          this.setState({
             inputValue: "",
             todoTask: [...this.state.todoTask, { taskName: content, createAt: final }]
          }, () => {
-            this.notify()
+            this.notifySuccess()
             localStorage.setItem("tasks", JSON.stringify(this.state))
          })
       }
 
+      if (this.state.todoTask.find(item => item.taskName === content)) {
+         this.setState({
+            inputValue: ""
+         }, () => {
+            this.notifyError()
+         })
+      }
+
+      // Add new edit
       if (!this.state.todoTask.find(item => item.taskName === content) && content && idEdit !== -1) {
          let index = this.state.idEdit
          const arr1 = [...this.state.todoTask.slice(0, index)]; // lay tu 1 den truoc vi tri index
@@ -70,7 +95,7 @@ class App extends Component {
             todoTask: arrEdited,
             inputValue: ""
          }, () => {
-            this.notify()
+            this.notifyChange()
             localStorage.setItem("tasks", JSON.stringify(this.state))
          })
       }
@@ -82,6 +107,7 @@ class App extends Component {
       this.setState({
          todoTask: todoTask
       }, () => {
+         this.notifyChange()
          localStorage.setItem("tasks", JSON.stringify(this.state))
       })
    }
@@ -97,14 +123,14 @@ class App extends Component {
    render() {
       return (
          <div className="container">
-            <ToastContainer />
+            <ToastContainer pauseOnHover={false} />
             <form onSubmit={this.createNewTask}>
                <input value={this.state.inputValue} onChange={this.handleChange} type="text" placeholder="Add new task" className="add"></input>
             </form>
             <div className="display">
                {
                   this.state.todoTask.map((item, index) => {
-                     if (item.taskName !== "") {
+                     if (item.taskName) {
                         return (
                            <div className="main" key={item.taskName}>
                               <div>
