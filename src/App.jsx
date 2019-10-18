@@ -19,6 +19,11 @@ class App extends Component {
 
    state = initDatas
 
+   componentDidMount() {
+      const tasks = localStorage.getItem("tasks");
+      this.setState(tasks !== null ? JSON.parse(tasks) : initDatas)
+   }
+
    notify = () => toast("Wow so easy !");
 
    notifySuccess = () => {
@@ -42,28 +47,29 @@ class App extends Component {
       })
    }
 
-   // Sau khi Render , can use set state
-   componentDidMount() {
-      const tasks = localStorage.getItem("tasks");
-      this.setState(tasks !== null ? JSON.parse(tasks) : initDatas)
-   }
-
+   // around funtion
    handleChange = (e) => {
       this.setState({
          inputValue: e.target.value
       })
    }
 
+   componentDidMount = () => {
+      const task = localStorage.getItem("task");
+      this.setState(task !== null ? JSON.parse(task) : initDatas);
+   }
+
    createNewTask = (e) => {
       e.preventDefault();
+
       let content = this.state.inputValue;
       let idEdit = this.state.idEdit;
       let newDate = new Date();
       let final = "Created at: " + newDate.getDate() + "/" + (newDate.getMonth() + 1) + "/" + newDate.getFullYear()
          + " Time : " + newDate.getMinutes() + ":" + newDate.getHours();
+
       let finalEdit = "Updated at: " + newDate.getDate() + "/" + (newDate.getMonth() + 1) + "/" + newDate.getFullYear()
          + " Time : " + newDate.getMinutes() + ":" + newDate.getHours();
-      // Kiem tra task da ton tai hay chua , su dung !
       // Add new task
       if (!this.state.todoTask.find(item => item.taskName === content) && content && idEdit === -1) {
          this.setState({
@@ -86,7 +92,9 @@ class App extends Component {
       // Add new edit
       if (!this.state.todoTask.find(item => item.taskName === content) && content && idEdit !== -1) {
          let index = this.state.idEdit
+
          const arr1 = [...this.state.todoTask.slice(0, index)]; // lay tu 1 den truoc vi tri index
+         // Change arr2
          const arr2 = [...[], { ...this.state.todoTask[index], taskName: content, createAt: finalEdit }]; // lay tai vi tri index
          const arr3 = [...this.state.todoTask.slice(index + 1)] // lay tu index+1 -> lenght
          const arrEdited = arr1.concat(arr2, arr3)

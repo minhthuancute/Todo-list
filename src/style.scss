@@ -1,57 +1,77 @@
-.add {
-    margin: 40px 0 20px 0;
-    width: 100%;
-    padding: 10px;
-    border-radius: 4px;
-    box-shadow: 8px 8px 10px rgba($color: #333, $alpha: .3);
-    border: none;
-    outline: none;
-    transition: all 0.3s ease-out;
+// .add {
+//     margin: 40px 0 20px 0;
+//     width: 100%;
+//     padding: 10px;
+//     border-radius: 4px;
+//     box-shadow: 8px 8px 10px rgba($color: #333, $alpha: .3);
+//     border: none;
+//     outline: none;
+//     transition: all 0.3s ease-out;
 
-    &:focus {
-        // border: 1px solid #8e44ad;
-        box-shadow: 0 0 1px 1px #8e44ad;
+//     &:focus {
+//         // border: 1px solid #8e44ad;
+//         box-shadow: 0 0 1px 1px #8e44ad;
 
-        &::placeholder {
-            opacity: 0;
-            transition: all 0.3s ease-out;
-        }
-    }
-}
+//         &::placeholder {
+//             opacity: 0;
+//             transition: all 0.3s ease-out;
+//         }
+//     }
+// }
+
+// .container {
+//     max-width: 800px !important;
+// }
+
+// .display {
+//     overflow: auto;
+//     height: 550px;
+
+//     .main {
+//         margin-bottom: 18px;
+//         display: flex;
+//         justify-content: space-between;
+//         align-items: center;
+//         box-shadow: 8px 8px 10px rgba($color: #333, $alpha: .1);
+//         padding: 0 20px;
+//         border-radius: 4px;
+//         transition: all 0.3s ease-out;
+//         cursor: pointer;
+
+//         &:hover {
+//             transform: translate(-5px, -5px);
+//         }
+
+//         p {
+//             color: #333;
+//             font-size: 20px;
+//             text-transform: capitalize;
+
+//             &.edit {
+//                 font-size: 15px;
+//                 transform: translateY(-12px);
+//                 color: rgba($color: #3333, $alpha: .5);
+//             }
+//         }
+//     }
+// }
 
 .container {
-    max-width: 800px !important;
-}
-
-.display {
-    overflow: auto;
-    height: 550px;
-
-    .main {
-        margin-bottom: 18px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        box-shadow: 8px 8px 10px rgba($color: #333, $alpha: .1);
-        padding: 0 20px;
-        border-radius: 4px;
-        transition: all 0.3s ease-out;
+    button {
+        width: 90px;
+        padding: 10px;
+        background: #74b9ff;
+        border: none;
+        color: #fff;
+        border-radius: 5px;
         cursor: pointer;
+        transition: all 0.3s;
 
         &:hover {
-            transform: translate(-5px, -5px);
+            background: #0984e3;
+            border-radius: 5px;
         }
 
-        p {
-            color: #333;
-            font-size: 20px;
-            text-transform: capitalize;
-
-            &.edit {
-                font-size: 15px;
-                transform: translateY(-12px);
-                color: rgba($color: #3333, $alpha: .5);
-            }
-        }
+        margin-right: 10px;
     }
 }

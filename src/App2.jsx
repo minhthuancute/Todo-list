@@ -1,73 +1,48 @@
 
 import React, { Component } from 'react'
+// import axios from 'axios'
 import 'bootstrap/dist/css/bootstrap.css'
+import Register from './components/TodoList/Register'
+import Login from './components/TodoList/Login'
+import { Alert } from 'reactstrap';
+
 
 class App2 extends Component {
 
     state = {
-        inputValue: "",
-        arrTask: [
-            { taskName: "", createAt: "" }
-        ]
-    }
+        register: false,
+        login: false
+    };
 
-    getValue = async (e) => {
+    handleRegister = () => {
         this.setState({
-            inputValue: await e.target.value
+            register: !this.state.register,
+            login: false
         })
-        // console.log(this.state.inputValue)
     }
 
-    createNewTask = (e) => {
-        e.preventDefault(); // chong load lai trang
-        // Get real Date
-
-        let newDate = new Date();
-        let final = "Created at: " + newDate.getDate() + "/" + (newDate.getMonth() + 1) + "/" + newDate.getFullYear();
-
-        let content = this.state.inputValue
-        if (!this.state.arrTask.find(item => item.taskName === content)) {
-            this.setState({
-                inputValue: "",
-                arrTask: [...this.state.arrTask, { taskName: content, createAt: final }]
-            })
-        }
-    }
-
-    handleDelete = (index) => {
-        let key = this.state.arrTask[index].taskName;
-        // -> key = "taskName"
-        let newArr = this.state.arrTask.filter(item => item.taskName !== key);
-
+    handleLogin = () => {
         this.setState({
-            arrTask: newArr
+            login: !this.state.login,
+            register: false
         })
     }
 
     render() {
         return (
-            <div className="App">
-                <form onSubmit={this.createNewTask}>
-                    <input value={this.state.inputValue} onChange={this.getValue} placeholder="Create New Task"></input>
-                </form>
-                <ul>
-                    {
-                        this.state.arrTask.map((item, index) => {
-                            if (item.taskName !== "") {
-                                return (
-                                    <div key={index}>
-                                        <li>{item.taskName}</li>
-                                        <p>{item.createAt}</p>
-                                        <button>Edit</button>
+            <div className="container">
+                <button className="left" onClick={this.handleRegister}>Register</button>
+                <button onClick={this.handleLogin}>Login</button>
 
-                                        {/* higher order funtion */}
-                                        <button onClick={() => this.handleDelete(index)}>Delete</button>
-                                    </div>
-                                )
-                            }
-                        })
-                    }
-                </ul>
+                {
+                    this.state.register &&
+                    <Register />
+                }
+                {
+                    this.state.login &&
+                    <Login />
+                }
+
             </div>
         )
     }
