@@ -28,14 +28,15 @@ html {
     }
 
     .container {
+        width: 1000px !important;
 
         form {
-            margin: 20px 0 20.4px 0;
+            margin: 22.5px 0 20.4px 0;
             display: flex;
             justify-content: center;
 
             input {
-                padding: 8px 12px;
+                padding: 5px 12px;
                 width: 440px;
                 max-width: 800px;
                 outline: none;
@@ -73,16 +74,18 @@ html {
             }
 
             .item {
-                border-bottom: 1px solid #65509e;
+                // box-shadow: 0 0 1px #65509e;
+                border-bottom: 1px solid rgba($color: #000000, $alpha: .1);
                 display: flex;
                 justify-content: space-between;
                 align-items: center;
-                padding: 10px;
-                cursor: pointer;
-                transition: all .1s ease-out;
+                padding: 5px 10px;
+                transition: all .2s ease-out;
 
                 &:hover {
-                    background: rgba($color: #000000, $alpha: .1);
+                    background: rgba($color: #65509e, $alpha: .1);
+                    transform: translate(-2px , -2px);
+                box-shadow: 0 0 -1px #65509e;
                 }
 
                 .left {
@@ -93,8 +96,9 @@ html {
                         cursor: pointer;
                         transition: all 0.4s ease-out;
 
-                        width: 70px;
-                        height: 70px;
+                        width: 60px;
+                        height: 60px;
+                        border-radius: 3px;
                         margin-right: 10px;
                         box-shadow: 0 0 12px rgba($color: #333, $alpha: .5);
 
@@ -104,10 +108,10 @@ html {
                     }
 
                     .text {
-                        margin: 10px 0 0 15px;
+                        margin: 8px 0 0 10px;
 
                         h2 {
-                            font-size: 21px;
+                            font-size: 20px;
                             color: #000;
                         }
 
@@ -128,7 +132,7 @@ html {
                         text-decoration: none;
                         transition: all 0.4s ease-out;
                         font-size: 16px;
-                        padding: 12px 15px;
+                        padding: 8px 15px;
                         border-radius: 3px;
                         color: #fff;
                         background: #65509e;
