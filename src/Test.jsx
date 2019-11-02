@@ -37,6 +37,7 @@ class Test extends Component {
             <div className="App">
                 <div className="container">
                     <form onSubmit={this.handleSearch}>
+                        <i className="fab fa-keycdn"></i>
                         <input onChange={this.handleChange} placeholder="Name of song"></input><br></br>
                         <button onClick={this.handleSearch} className="ml-3 btn btn-success">Search</button>
                     </form>
@@ -45,11 +46,11 @@ class Test extends Component {
                             this.state.datas.map((item, index) => (
                                 <div key={index} className="item">
                                     <div className="left">
-                                        <a href={item.collectionViewUrl} target="_blank">
+                                        <a href={item.collectionViewUrl} target="_blank" rel="noopener noreferrer">
                                             <img src={item.artworkUrl60} alt={item.trackName}></img>
                                         </a>
                                         <div className="text">
-                                            <a href={item.collectionViewUrl} target="_blank">
+                                            <a href={item.collectionViewUrl} target="_blank" rel="noopener noreferrer">
                                                 <h2>{item.trackName}</h2>
                                             </a>
                                             <p>{item.artistName}</p>
@@ -57,7 +58,7 @@ class Test extends Component {
                                     </div>
 
                                     <div className="right">
-                                        <a className="view" href={item.collectionViewUrl} target="_blank">Preview</a>
+                                        <a className="view" href={item.collectionViewUrl} target="_blank" rel="noopener noreferrer">Preview</a>
                                     </div>
                                 </div>
 

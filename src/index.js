@@ -3,10 +3,10 @@ import ReactDOM from "react-dom";
 import * as serviceWorker from "./serviceWorker";
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-import Test from './Test'
+import App3 from './App3'
 
 // Render A Todolist
-ReactDOM.render(<Test />, document.getElementById("root"));
+ReactDOM.render(<App3 />, document.getElementById("root"));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
