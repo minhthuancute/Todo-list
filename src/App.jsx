@@ -13,6 +13,7 @@ import './style.scss'
 
 const initDatas = {
    userName: "Minh Thuan",
+   showTableDone: true,
    TodoTask: [
       { taskName: "", done: false },
    ],
@@ -74,7 +75,7 @@ class App extends Component {
    }
 
    render() {
-      const { userName, TodoTask } = this.state;
+      const { userName, TodoTask, showTableDone } = this.state;
 
       return (
          <div className="App">
@@ -83,8 +84,8 @@ class App extends Component {
                <TodoTitle task={TodoTask} name={userName} />
                <TodoForm callBack={this.createNewTask} />
                <TodoTable tasks={this.filterStatus(false)} remove={this.handleRemove} callbackCheck={this.handleChecked} />
-               <TodoShowDone />
-               <TodoTableDone tasks={this.filterStatus(true)} callbackCheck={this.handleChecked} />
+               <TodoShowDone isHide={showTableDone} hideTableDone={() => this.setState({ showTableDone: !showTableDone })} />
+               {showTableDone && <TodoTableDone tasks={this.filterStatus(true)} callbackCheck={this.handleChecked} />}
             </div>
          </div>
       )
