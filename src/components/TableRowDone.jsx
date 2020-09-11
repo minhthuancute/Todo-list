@@ -10,18 +10,14 @@ class TableRowDone extends Component {
                 <tr key={task}>
                     <td>
                         <p style={{
-                            transform: 'translateY(5px)'
+                            marginTop: '10px'
                         }}>{taskName}</p>
                     </td>
                     <td>
-                        <div className='d-flex justify-content-between align-items-lg-center' style={{
-                            marginTop: '8px'
-                        }}>
-                            <input style={{
-                                cursor: 'pointer',
-                                transform: 'translateY(-3px)'
-                            }} checked={done} onChange={() => this.props.callbackCheck(this.props.task)} type="checkbox"></input>
-                        </div>
+                        <input style={{
+                            cursor: 'pointer',
+                            marginTop: '15px'
+                        }} checked={done} onChange={() => this.props.callbackCheck(this.props.task)} type="checkbox"></input>
                     </td>
                 </tr>
             </>

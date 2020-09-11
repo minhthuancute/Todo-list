@@ -1,19 +1,22 @@
+* {
+   letter-spacing: 0.5px;
+}
 
-.btn-exit{
+.btn-exit {
    transition: all 0.3s ease-in;
    background-color: #ff3838;
    position: relative;
    width: 22px;
    height: 22px;
 
-   i{
+   i {
       position: absolute;
       top: 50%;
       left: 50%;
-      transform: translate(-50%,-50%);
+      transform: translate(-50%, -50%);
    }
 }
 
-.row-right{
+.row-right {
    height: 100%;
 }

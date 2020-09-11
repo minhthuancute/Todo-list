@@ -12,7 +12,7 @@ import TodoShowDone from './components/TodoShowDone'
 import './style.scss'
 
 const initDatas = {
-   userName: "Minh Thuan",
+   userName: "Minh",
    showTableDone: true,
    TodoTask: [
       { taskName: "", done: false },
@@ -79,6 +79,9 @@ class App extends Component {
 
       return (
          <div className="App">
+
+            <p className="today">Today is a good day</p>
+
             <ToastContainer />
             <div className="container">
                <TodoTitle task={TodoTask} name={userName} />
@@ -92,4 +95,4 @@ class App extends Component {
    }
 }
 
-export default App;
+export default React.memo(App);
