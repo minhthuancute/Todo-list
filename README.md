@@ -1,3 +1,9 @@
+Technology:
+- Class component
+- State, props
+- Bootstrap 4
+- Life cycle component
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
