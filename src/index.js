@@ -6,7 +6,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import App from './App'
 
 // Render A Todolist
-ReactDOM.render( < App / > , document.getElementById("root"));
+ReactDOM.render( <App /> , document.getElementById("root"));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
@@ -14,6 +14,6 @@ ReactDOM.render( < App / > , document.getElementById("root"));
 serviceWorker.unregister();
 
 // No reload page
-if (module.hot) {
+if(module.hot) {
     module.hot.accept()
 }

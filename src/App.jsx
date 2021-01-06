@@ -79,9 +79,6 @@ class App extends Component {
 
       return (
          <div className="App">
-
-            <p className="today">Today is a good day</p>
-
             <ToastContainer />
             <div className="container">
                <TodoTitle task={TodoTask} name={userName} />
